@@ -1,7 +1,8 @@
 # brakingsystem
 OpenComputersによるImmersiveRailroadingの停車制御<br>
-<br>
 ブレーキ制動プログラムと発車プログラム<br>
+GE B40-8で動作確認<br>
+<br>
 brakingsystem.luaがブレーキ制動プログラム<br>
 100mで30km/hに制御する。むりやり比例制御もどき<br>
 0～100m、20m間隔でdetector,controlerを隣り合わせて計6セット配置すること<br>
