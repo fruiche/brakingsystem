@@ -29,22 +29,20 @@ function brakingsystem()
 
         elseif augment_type == "LOCO_CONTROL" then
 
-            if info == nil or info.max_speed == nil then
-                goto continue
-            end
-
-            if loco_speed > 70 then
-                component.proxy(net_address).setThrottle(-1.0)
-                component.proxy(net_address).setBrake(1)
-            elseif loco_speed > 50 then
-                component.proxy(net_address).setThrottle(0.0)
-                component.proxy(net_address).setBrake(0.7)
-            elseif loco_speed > 30 then
-                component.proxy(net_address).setThrottle(0.2)
-                component.proxy(net_address).setBrake(0.25)
-            else
-                component.proxy(net_address).setThrottle(0.3)
-                component.proxy(net_address).setBrake(0)
+            for net_address in component.list("ir_augment_control") do
+                if loco_speed > 60 then
+                    component.proxy(net_address).setThrottle(-1.0)
+                    component.proxy(net_address).setBrake(1)
+                elseif loco_speed > 40 then
+                    component.proxy(net_address).setThrottle(0.0)
+                    component.proxy(net_address).setBrake(0.5)
+                elseif loco_speed > 25 then
+                    component.proxy(net_address).setThrottle(0.2)
+                    component.proxy(net_address).setBrake(0.25)
+                else
+                    component.proxy(net_address).setThrottle(0.3)
+                    component.proxy(net_address).setBrake(0)
+                end
             end
         else
             print("--other type augment!!!!--")
